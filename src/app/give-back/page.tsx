@@ -21,7 +21,7 @@ export default function GiveBack() {
           <div className="architectural-grid" />
           <div className="absolute inset-0">
             <Image
-              src="https://lisagalea.com/wp-content/uploads/2025/04/lisa-galea-education-MBA-body-language-for-business-w.jpg"
+              src="/images/give-back-hero.jpg"
               alt=""
               fill
               className="object-cover object-top opacity-24"
@@ -155,7 +155,7 @@ export default function GiveBack() {
             <div className="bauhaus-panel p-4">
             <div className="relative aspect-[4/3] overflow-hidden border-2 border-brand-black">
               <Image
-                src="https://lisagalea.com/wp-content/uploads/2024/07/lisagalea-commercial-creativity-neurospicy-leadership-ai-training-img.jpg"
+                src="/images/lisa-galea-community-workshop.jpg"
                 alt="Lisa Galea mentoring and community advocacy"
                 fill
                 className="object-cover object-top"

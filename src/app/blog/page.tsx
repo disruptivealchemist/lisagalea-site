@@ -38,7 +38,7 @@ export default function Blog() {
           <div className="architectural-grid" />
           <div className="absolute inset-0">
             <Image
-              src="https://lisagalea.com/wp-content/uploads/2025/09/co-working-13b.png"
+              src="/images/blog-hero.jpg"
               alt=""
               fill
               className="object-cover object-center opacity-24"

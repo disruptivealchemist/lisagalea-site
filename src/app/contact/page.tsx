@@ -101,7 +101,7 @@ export default function Contact() {
               <div className="bauhaus-panel p-4">
               <div className="relative aspect-[3/4] overflow-hidden border-2 border-brand-black">
                 <Image
-                  src="https://lisagalea.com/wp-content/uploads/2024/07/lisagalea-commercial-creativity-neurospicy-leadership-ai-training-img.jpg"
+                  src="/images/lisa-galea-contact-portrait.jpg"
                   alt="Lisa Galea, MBSc — Disruptive Alchemist"
                   fill
                   className="object-cover object-top"
@@ -119,8 +119,8 @@ export default function Contact() {
               <div className="bauhaus-panel p-4">
                 <div className="relative aspect-[1/1] overflow-hidden border-2 border-brand-black bg-grey-light">
                   <Image
-                    src="https://lisagalea.com/wp-content/uploads/2024/03/lisa-g-curiosity-essential-bk-w.png"
-                    alt="Curiosity Essential"
+                    src="/images/lisa-galea-curiosity-panel.jpg"
+                    alt="Curiosity and creative leadership"
                     fill
                     className="object-contain p-8"
                     sizes="380px"
@@ -164,7 +164,7 @@ export default function Contact() {
             <div className="bauhaus-panel p-4">
             <div className="relative aspect-[4/3] overflow-hidden border-2 border-brand-black">
               <Image
-                src="https://lisagalea.com/wp-content/uploads/2024/02/sanctuary-in-the-pocket-fw-tranquil-water.jpg"
+                src="/images/sanctuary-retreat.jpg"
                 alt="Sanctuary in the Pocket — Byron Bay Hinterland retreat venue"
                 fill
                 className="object-cover"
