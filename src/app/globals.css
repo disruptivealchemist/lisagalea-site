@@ -1,0 +1,811 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BRAND DESIGN TOKENS — Lisa Galea Consulting
+   Source: lisagalea-design-tokens.json (2026-03-27)
+
+   Tailwind v4: tokens defined here via @theme become utility classes.
+   Colors     → text-{name}  bg-{name}  border-{name}
+   Fonts      → font-{name}
+   Font sizes → text-{name}  (distinguished from colors by their namespace)
+   Radii      → rounded-{name}
+   Tracking   → tracking-{name}
+───────────────────────────────────────────────────────────────────────────── */
+
+@theme {
+  /* ── Colors ── */
+  --color-ink:        #272626;          /* primary text / border */
+  --color-ink-strong: #262626;          /* high-contrast variant */
+  --color-ink-muted:  rgba(38,38,38,0.65); /* secondary text / form placeholder */
+  --color-gold:       #a41e21;          /* accent / hover state */
+  --color-grey-light: #f7f7f7;          /* subtle backgrounds */
+  --color-canvas:     #f7f7f7;          /* page background */
+  --color-brand-black:#0a0a0b;
+  --color-brand-paper:#f7f7f7;
+  --color-vivid-cyan:#00f5ff;
+  --color-vivid-magenta:#ff00ff;
+  --color-vivid-blue:#2d5bff;
+
+  /* ── Typography — font families ── */
+  --font-display:          "playfair-display", serif;       /* hero headings */
+  --font-heading:          "futura-pt-bold", sans-serif;    /* section headings */
+  --font-heading-regular:  "futura-pt", sans-serif;         /* sub-headings */
+  --font-ui:               "futura-100-book", sans-serif;   /* UI / buttons — Book weight */
+  --font-body:             "futura-100-book", sans-serif;   /* body copy */
+  --font-condensed:        museo-sans-condensed, sans-serif; /* tight labels */
+
+  /* ── Typography — font sizes ── */
+  --text-display:       104px;  /* hero display — 78pt source */
+  --text-post-desktop:   21px;  /* blog body copy at desktop */
+  --text-post-mobile:    18px;  /* blog body copy at mobile */
+  --text-form:           20px;  /* form field text — 15pt source */
+  --text-btn:            16px;  /* button label */
+
+  /* ── Typography — tracking ── */
+  --tracking-ui:  1px;          /* buttons, form labels */
+
+  /* ── Border radius ── */
+  --radius-pill:  50px;         /* buttons */
+  --radius-field: 50px;         /* form inputs */
+
+  /* ── Breakpoints (override Tailwind defaults) ── */
+  --breakpoint-sm: 601px;       /* desktop-min from tokens */
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BASE STYLES
+───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Expose raw tokens for non-Tailwind CSS usage (e.g. @keyframes, SVG) */
+  --clr-ink:        #272626;
+  --clr-gold:       #a41e21;
+  --clr-grey-light: #f7f7f7;
+  --clr-canvas:     #f7f7f7;
+  --clr-brand-black:#0a0a0b;
+  --clr-brand-paper:#f7f7f7;
+  --clr-vivid-cyan:#00f5ff;
+  --clr-vivid-magenta:#ff00ff;
+  --clr-vivid-blue:#2d5bff;
+
+  --dur-expand: 0.3s;
+  --ease-out: cubic-bezier(0, 0, 0.58, 1);
+}
+
+body {
+  background-color: var(--clr-brand-paper);
+  color: var(--clr-ink);
+  /* Font stack: Adobe Fonts → graceful fallback while kit loads */
+  font-family: "futura-100-book", "Futura", "Century Gothic", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(45, 91, 255, 0.9);
+  color: #fff;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TYPOGRAPHY SCALE
+   Headings default to Futura PT Bold; display hero to Playfair Display
+───────────────────────────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "futura-pt-bold", "Futura", "Century Gothic", Arial, sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--clr-ink);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BUTTONS  — component defaults; override per-page with Tailwind utilities
+───────────────────────────────────────────────────────────────────────────── */
+
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "futura-100-book", "Futura", "Century Gothic", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 50px;
+  padding: 1rem 1.7rem;
+  background-color: var(--clr-brand-paper);
+  color: var(--clr-brand-black);
+  border-color: var(--clr-brand-black);
+  transition:
+    color 0.22s var(--ease-out),
+    background-color 0.22s var(--ease-out),
+    border-color 0.22s var(--ease-out),
+    transform 0.22s var(--ease-out);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn::before {
+  content: none;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  color: var(--clr-brand-paper);
+  background-color: var(--clr-gold);
+  border-color: var(--clr-gold);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--clr-vivid-cyan);
+  outline-offset: 2px;
+}
+
+/* Filled / primary variant — dark bg, same hover */
+.btn-filled {
+  background-color: var(--clr-gold);
+  color: var(--clr-brand-paper);
+  border-color: var(--clr-gold);
+}
+
+.btn-filled:hover,
+.btn-filled:focus-visible {
+  color: var(--clr-brand-paper);
+  background-color: var(--clr-brand-black);
+  border-color: var(--clr-brand-black);
+}
+
+/* Ghost variant — for buttons sitting on dark/ink backgrounds */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--clr-brand-paper);
+  border-color: var(--clr-brand-paper);
+}
+
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  color: var(--clr-brand-paper);
+  background-color: var(--clr-gold);
+  border-color: var(--clr-gold);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FORM FIELDS
+───────────────────────────────────────────────────────────────────────────── */
+
+.field {
+  font-family: "futura-100-book", "Futura", "Century Gothic", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: rgba(38, 38, 38, 0.65);
+  background-color: var(--clr-canvas);
+  border: 2px solid var(--clr-ink);
+  border-radius: 50px;
+  padding-block: 17px;
+  padding-inline: 15px;
+  width: 100%;
+}
+
+.field:focus {
+  outline: none;
+  border-color: var(--clr-gold);
+}
+
+textarea.field {
+  border-radius: 25px;
+  min-height: 10em;
+  resize: none;
+  transition: height var(--dur-expand) var(--ease-out);
+}
+
+textarea.field:focus {
+  min-height: 25em;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONCEPT UTILITIES — atmospheric layout, rhythm, and motion
+───────────────────────────────────────────────────────────────────────────── */
+
+.section-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.section-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: none;
+  opacity: 0;
+  z-index: -1;
+}
+
+.concept-panel {
+  background: rgba(245, 245, 240, 0.8);
+  border: 1px solid rgba(10, 10, 11, 0.18);
+  box-shadow: 0 18px 45px rgba(10, 10, 11, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.architectural-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(90deg, rgba(39, 38, 38, 0.12) 1px, transparent 1px),
+    linear-gradient(rgba(39, 38, 38, 0.12) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), transparent 92%);
+  opacity: 0.32;
+}
+
+.bauhaus-kicker {
+  font-family: "futura-100-book", "Futura", "Century Gothic", Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+.bauhaus-panel {
+  position: relative;
+  background: rgba(247, 247, 247, 0.9);
+  border: 1px solid rgba(10, 10, 11, 0.14);
+  box-shadow: none;
+}
+
+.bauhaus-panel-dark {
+  position: relative;
+  background: var(--clr-brand-black);
+  color: var(--clr-brand-paper);
+  border: 1px solid rgba(10, 10, 11, 0.14);
+  box-shadow: none;
+}
+
+.bauhaus-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.45rem 0.85rem;
+  border: 1.5px solid var(--clr-brand-black);
+  background: var(--clr-brand-paper);
+  font-family: "futura-100-book", "Futura", "Century Gothic", Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.bauhaus-card {
+  background: rgba(247, 247, 247, 0.95);
+  border: 1px solid rgba(10, 10, 11, 0.14);
+  box-shadow: none;
+  transition: transform 0.22s var(--ease-out), border-color 0.22s var(--ease-out);
+}
+
+.bauhaus-card:hover,
+.bauhaus-card:focus-within {
+  transform: translateY(-2px);
+  border-color: rgba(10, 10, 11, 0.24);
+}
+
+.bauhaus-number {
+  font-family: "playfair-display", Georgia, serif;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 0.9;
+}
+
+.bauhaus-rule {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--clr-brand-black), rgba(39, 38, 38, 0.1));
+}
+
+.card-lift {
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+}
+
+.card-lift:hover,
+.card-lift:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(39, 38, 38, 0.16);
+}
+
+.reveal-rise {
+  animation: reveal-rise 0.7s var(--ease-out) both;
+}
+
+.reveal-rise-delayed {
+  animation: reveal-rise 0.9s var(--ease-out) both;
+}
+
+.futurist-label {
+  font-family: "futura-100-book", "Futura", "Century Gothic", Arial, sans-serif;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--clr-gold);
+  font-size: 9px;
+}
+
+.surreal-frame {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+  transition: clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.surreal-frame:hover {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+}
+
+.helix-container {
+  pointer-events: none;
+  opacity: 0.18;
+  z-index: 0;
+  position: absolute;
+  inset: 0;
+}
+
+.noise-overlay {
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  position: fixed;
+  inset: 0;
+}
+
+.vivid-cyan {
+  color: var(--clr-vivid-cyan);
+}
+
+.vivid-magenta {
+  color: var(--clr-vivid-magenta);
+}
+
+.vivid-blue {
+  color: var(--clr-vivid-blue);
+}
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ZIGGYZAP WIDGET — scoped .zz-* styles
+   Retro terminal meets haute couture. Brand-black + gold. No round corners.
+───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Launcher (avatar button container) ─────────────────────────────────── */
+
+.zz-launcher {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+/* ── Avatar button ──────────────────────────────────────────────────────── */
+
+.zz-avatar-btn {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--clr-brand-black);
+  border: 1.5px solid var(--clr-gold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, transform 0.15s;
+  box-shadow: 0 4px 20px rgba(245, 181, 26, 0.18);
+}
+
+.zz-avatar-btn:hover {
+  border-color: #fff;
+  transform: scale(1.06);
+}
+
+.zz-avatar-btn--open {
+  border-color: rgba(245, 181, 26, 0.5);
+}
+
+.zz-monogram {
+  font-family: "playfair-display", Georgia, serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--clr-gold);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ── Pulse ring (ambient when closed) ──────────────────────────────────── */
+
+.zz-pulse-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 181, 26, 0.35);
+  animation: zz-pulse 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes zz-pulse {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  70%  { transform: scale(1.3); opacity: 0; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+/* ── Jiggle animation (Zap & Reward) ───────────────────────────────────── */
+
+.zz-jiggle {
+  animation: zz-jiggle 0.5s ease-in-out;
+}
+
+@keyframes zz-jiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  20%       { transform: rotate(-6deg) scale(1.08); }
+  40%       { transform: rotate(6deg) scale(1.08); }
+  60%       { transform: rotate(-4deg) scale(1.05); }
+  80%       { transform: rotate(4deg) scale(1.05); }
+}
+
+/* ── Tooltip ────────────────────────────────────────────────────────────── */
+
+.zz-tooltip {
+  background: var(--clr-brand-black);
+  border: 1px solid var(--clr-gold);
+  color: var(--clr-gold);
+  font-family: "futura-100-book", "Futura", "Century Gothic", Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 8px 14px;
+  white-space: nowrap;
+  max-width: 240px;
+  white-space: normal;
+  text-align: right;
+  animation: zz-fade-in 0.2s ease;
+}
+
+@keyframes zz-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Chat Panel ─────────────────────────────────────────────────────────── */
+
+.zz-panel {
+  position: fixed;
+  bottom: 96px;
+  right: 28px;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  height: 520px;
+  max-height: calc(100dvh - 120px);
+  z-index: 8999;
+  background: var(--clr-brand-black);
+  border: 1px solid rgba(245, 181, 26, 0.3);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(245, 181, 26, 0.08);
+  animation: zz-panel-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes zz-panel-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+
+.zz-header {
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--clr-gold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  /* Scanline texture — subtle CRT effect */
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(245, 181, 26, 0.025) 3px,
+      rgba(245, 181, 26, 0.025) 4px
+    ),
+    var(--clr-brand-black);
+}
+
+.zz-header-identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.zz-bolt {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.zz-name {
+  font-family: "playfair-display", Georgia, serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--clr-gold);
+  letter-spacing: 0.02em;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.zz-subtitle {
+  font-family: "futura-100-book", "Futura", "Century Gothic", Arial, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(245, 181, 26, 0.5);
+  margin: 2px 0 0;
+}
+
+.zz-header-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.zz-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--clr-gold);
+  flex-shrink: 0;
+}
+
+.zz-status-dot--thinking {
+  animation: zz-blink 0.9s ease-in-out infinite;
+}
+
+@keyframes zz-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+.zz-status-label {
+  font-family: "futura-100-book", "Futura", "Century Gothic", Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245, 181, 26, 0.55);
+}
+
+/* ── Messages ───────────────────────────────────────────────────────────── */
+
+.zz-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scroll-behavior: smooth;
+}
+
+/* Thin scrollbar */
+.zz-messages::-webkit-scrollbar { width: 3px; }
+.zz-messages::-webkit-scrollbar-track { background: transparent; }
+.zz-messages::-webkit-scrollbar-thumb { background: rgba(245, 181, 26, 0.3); }
+
+.zz-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  animation: zz-msg-in 0.2s ease;
+}
+
+@keyframes zz-msg-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.zz-msg--user {
+  flex-direction: row-reverse;
+}
+
+.zz-msg-avatar {
+  font-family: "playfair-display", Georgia, serif;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--clr-gold);
+  letter-spacing: 0.06em;
+  background: rgba(245, 181, 26, 0.1);
+  border: 1px solid rgba(245, 181, 26, 0.25);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.zz-msg-bubble {
+  font-family: "futura-100-book", "Futura", "Century Gothic", Arial, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.65;
+  padding: 10px 13px;
+  max-width: 82%;
+}
+
+/* ZiggyZap messages — dark with gold left border */
+.zz-msg--assistant .zz-msg-bubble {
+  color: rgba(247, 247, 247, 0.88);
+  border-left: 2px solid var(--clr-gold);
+  background: rgba(245, 181, 26, 0.04);
+}
+
+/* User messages — right-aligned, outline style */
+.zz-msg--user .zz-msg-bubble {
+  color: rgba(247, 247, 247, 0.75);
+  border: 1px solid rgba(247, 247, 247, 0.15);
+  background: rgba(247, 247, 247, 0.04);
+  text-align: right;
+}
+
+/* Links inside messages */
+.zz-link {
+  color: var(--clr-gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+.zz-link:hover {
+  color: #fff;
+}
+
+/* ── Typing indicator ───────────────────────────────────────────────────── */
+
+.zz-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 13px;
+  border-left: 2px solid var(--clr-gold);
+  background: rgba(245, 181, 26, 0.04);
+}
+
+.zz-typing span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--clr-gold);
+  animation: zz-typing-dot 1.2s infinite ease-in-out;
+}
+
+.zz-typing span:nth-child(1) { animation-delay: 0s; }
+.zz-typing span:nth-child(2) { animation-delay: 0.2s; }
+.zz-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes zz-typing-dot {
+  0%, 80%, 100% { transform: scale(0.7); opacity: 0.4; }
+  40%            { transform: scale(1);   opacity: 1; }
+}
+
+/* ── Input row ──────────────────────────────────────────────────────────── */
+
+.zz-input-row {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgba(245, 181, 26, 0.2);
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.zz-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: rgba(247, 247, 247, 0.85);
+  font-family: "futura-100-book", "Futura", "Century Gothic", Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  padding: 14px 14px;
+  placeholder-color: rgba(247, 247, 247, 0.3);
+}
+
+.zz-input::placeholder {
+  color: rgba(247, 247, 247, 0.3);
+}
+
+.zz-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.zz-send {
+  background: transparent;
+  border: none;
+  border-left: 1px solid rgba(245, 181, 26, 0.2);
+  color: var(--clr-gold);
+  font-size: 18px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.zz-send:hover:not(:disabled) {
+  background: rgba(245, 181, 26, 0.12);
+  color: #fff;
+}
+
+.zz-send:disabled {
+  color: rgba(245, 181, 26, 0.25);
+  cursor: not-allowed;
+}
+
+/* ── Footer note ────────────────────────────────────────────────────────── */
+
+.zz-footer-note {
+  font-family: "futura-100-book", "Futura", "Century Gothic", Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: rgba(247, 247, 247, 0.2);
+  padding: 6px 14px 8px;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(245, 181, 26, 0.08);
+}
+
+.zz-footer-link {
+  color: rgba(245, 181, 26, 0.4);
+  text-decoration: none;
+}
+
+.zz-footer-link:hover {
+  color: rgba(245, 181, 26, 0.7);
+}
+
+/* ── Mobile ─────────────────────────────────────────────────────────────── */
+
+@media (max-width: 440px) {
+  .zz-launcher {
+    bottom: 18px;
+    right: 16px;
+  }
+
+  .zz-panel {
+    bottom: 84px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+    max-width: none;
+    height: 480px;
+  }
+}
