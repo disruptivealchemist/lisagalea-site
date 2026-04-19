@@ -101,7 +101,7 @@ export default function Contact() {
               <div className="bauhaus-panel p-4">
               <div className="relative aspect-[3/4] overflow-hidden border-2 border-brand-black">
                 <Image
-                  src="/images/lisa-galea-contact-portrait.jpg"
+                  src="/images/lisa-galea-neurospicy-training.jpg"
                   alt="Lisa Galea, MBSc — Disruptive Alchemist"
                   fill
                   className="object-cover object-top"
@@ -119,8 +119,8 @@ export default function Contact() {
               <div className="bauhaus-panel p-4">
                 <div className="relative aspect-[1/1] overflow-hidden border-2 border-brand-black bg-grey-light">
                   <Image
-                    src="/images/lisa-galea-curiosity-panel.jpg"
-                    alt="Curiosity and creative leadership"
+                    src="/images/lisa-galea-curiosity-book.png"
+                    alt="Curiosity Essential — Lisa Galea"
                     fill
                     className="object-contain p-8"
                     sizes="380px"

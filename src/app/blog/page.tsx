@@ -38,7 +38,7 @@ export default function Blog() {
           <div className="architectural-grid" />
           <div className="absolute inset-0">
             <Image
-              src="/images/blog-hero.jpg"
+              src="/images/blog-hero.png"
               alt=""
               fill
               className="object-cover object-center opacity-24"
