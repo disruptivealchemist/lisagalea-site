@@ -69,6 +69,7 @@ function renderMarkdown(text: string): string {
 
 export function ZiggyZap() {
   const [open, setOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -101,6 +102,23 @@ export function ZiggyZap() {
       setTimeout(() => inputRef.current?.focus(), 100);
     }
   }, [open]);
+
+  // ── Modal mode: listen for custom event ────────────────────────────────────────
+
+  useEffect(() => {
+    function handleModalOpen() {
+      setModalOpen(true);
+      if (!hasGreeted.current) {
+        hasGreeted.current = true;
+        const greeting = getRandomGreeting();
+        setMessages([{ role: "assistant", content: greeting }]);
+      }
+      setTimeout(() => inputRef.current?.focus(), 100);
+    }
+
+    window.addEventListener("ziggy:modal", handleModalOpen);
+    return () => window.removeEventListener("ziggy:modal", handleModalOpen);
+  }, []);
 
   // ── Glitch Mode: hover any .btn for >5s ─────────────────────────────────────
 
@@ -432,6 +450,106 @@ export function ZiggyZap() {
           <p className="zz-footer-note">
             Powered by <a href="/about" className="zz-footer-link">Lisa Galea</a> &amp; Claude
           </p>
+        </div>
+      )}
+
+      {/* ── Modal Mode Overlay ────────────────────────────────────────────── */}
+      {modalOpen && (
+        <div
+          className="zz-modal-overlay"
+          onClick={() => setModalOpen(false)}
+          role="presentation"
+        >
+          <div
+            className="zz-modal-panel"
+            role="dialog"
+            aria-label="ZiggyZap Chat"
+            aria-modal="true"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              className="zz-modal-close"
+              onClick={() => setModalOpen(false)}
+              aria-label="Close chat"
+              title="Close"
+            >
+              ✕
+            </button>
+
+            {/* Header */}
+            <div className="zz-header">
+              <div className="zz-header-identity">
+                <span className="zz-bolt" aria-hidden="true">⚡</span>
+                <div>
+                  <p className="zz-name">ZiggyZap</p>
+                  <p className="zz-subtitle">AI CONCIERGE</p>
+                </div>
+              </div>
+              <div className="zz-header-status">
+                <span className={`zz-status-dot${loading ? " zz-status-dot--thinking" : ""}`} aria-hidden="true" />
+                <span className="zz-status-label">{loading ? "thinking..." : "online"}</span>
+              </div>
+            </div>
+
+            {/* Messages */}
+            <div className="zz-messages" role="log" aria-live="polite" aria-label="Conversation">
+              {messages.map((msg, i) => (
+                <div
+                  key={i}
+                  className={`zz-msg zz-msg--${msg.role}${msg.pending ? " zz-msg--pending" : ""}`}
+                >
+                  {msg.role === "assistant" && (
+                    <span className="zz-msg-avatar" aria-hidden="true">ZZ</span>
+                  )}
+                  <div
+                    className="zz-msg-bubble"
+                    dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }}
+                  />
+                </div>
+              ))}
+
+              {/* Typing indicator */}
+              {loading && messages[messages.length - 1]?.content === "" && (
+                <div className="zz-msg zz-msg--assistant">
+                  <span className="zz-msg-avatar" aria-hidden="true">ZZ</span>
+                  <div className="zz-typing" aria-label="ZiggyZap is thinking">
+                    <span /><span /><span />
+                  </div>
+                </div>
+              )}
+
+              <div ref={messagesEndRef} />
+            </div>
+
+            {/* Input */}
+            <form className="zz-input-row" onSubmit={handleSubmit} aria-label="Send a message">
+              <input
+                ref={inputRef}
+                className="zz-input"
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder={leadEmailPending ? "Enter your email address..." : "Ask ZiggyZap anything..."}
+                disabled={loading}
+                autoComplete={leadEmailPending ? "email" : "off"}
+                aria-label="Your message"
+              />
+              <button
+                type="submit"
+                className="zz-send"
+                disabled={loading || !input.trim()}
+                aria-label="Send message"
+              >
+                →
+              </button>
+            </form>
+
+            {/* Footer */}
+            <p className="zz-footer-note">
+              Powered by <a href="/about" className="zz-footer-link">Lisa Galea</a> &amp; Claude
+            </p>
+          </div>
         </div>
       )}
     </>

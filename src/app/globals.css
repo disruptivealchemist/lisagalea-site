@@ -792,6 +792,56 @@ textarea.field:focus {
   color: rgba(245, 181, 26, 0.7);
 }
 
+/* ── Modal Mode (Centered Overlay) ──────────────────────────────────────────── */
+
+.zz-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(10, 10, 11, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+  animation: zz-panel-in 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.zz-modal-panel {
+  position: relative;
+  width: min(740px, 95vw);
+  height: min(620px, 85vh);
+  background: var(--clr-brand-black);
+  border-radius: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  animation: zz-panel-in 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.zz-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10001;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: var(--clr-gold);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.zz-modal-close:hover {
+  color: #fff;
+}
+
 /* ── Mobile ─────────────────────────────────────────────────────────────── */
 
 @media (max-width: 440px) {
@@ -807,5 +857,15 @@ textarea.field:focus {
     width: auto;
     max-width: none;
     height: 480px;
+  }
+
+  .zz-modal-panel {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .zz-modal-overlay {
+    padding: 0;
   }
 }

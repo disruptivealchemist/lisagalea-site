@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { ZiggyOpenButton } from "@/components/ZiggyOpenButton";
+import { ParallaxCard } from "@/components/ParallaxCard";
 import { posts } from "@/lib/data/posts";
 
 export const metadata: Metadata = {
@@ -109,7 +110,11 @@ export default function Home() {
         <section className="bg-brand-black py-16 sm:py-24">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <div className="mb-12 text-center">
-              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold">ZiggyZap // AI Concierge</p>
+              <div className="mx-auto mb-6 h-24 w-24 rounded-full bg-brand-black border-2 border-gold/40 flex items-center justify-center">
+                <span className="font-display text-4xl text-gold">⚡</span>
+              </div>
+              {/* TODO: Replace with ZiggyZap character asset when ready */}
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-brand-paper/70">ZiggyZap // AI Concierge</p>
               <h2 className="mt-4 font-heading text-[2.2rem] uppercase leading-[0.9] tracking-[-0.05em] text-brand-paper sm:text-[3rem]">
                 Your Guide to Lisa&apos;s World
               </h2>
@@ -121,7 +126,7 @@ export default function Home() {
 
             <div className="grid gap-6 md:grid-cols-3 mb-10">
               <div className="rounded-[28px] border border-gold/20 bg-brand-paper/5 p-8">
-                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold">01</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-paper/60">01</p>
                 <h3 className="mt-3 font-heading text-[1.4rem] uppercase leading-[0.95] tracking-[-0.04em] text-brand-paper">
                   Ask Anything
                 </h3>
@@ -130,7 +135,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="rounded-[28px] border border-gold/30 bg-gold/10 p-8">
-                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold">02</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-paper/60">02</p>
                 <h3 className="mt-3 font-heading text-[1.4rem] uppercase leading-[0.95] tracking-[-0.04em] text-brand-paper">
                   Take the Quiz
                 </h3>
@@ -139,7 +144,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="rounded-[28px] border border-gold/20 bg-brand-paper/5 p-8">
-                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold">03</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-paper/60">03</p>
                 <h3 className="mt-3 font-heading text-[1.4rem] uppercase leading-[0.95] tracking-[-0.04em] text-brand-paper">
                   Find Your Path
                 </h3>
@@ -149,7 +154,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="text-center">
+            <div className="text-center pt-8">
               <ZiggyOpenButton />
               <p className="mt-4 font-mono text-[9px] uppercase tracking-[0.22em] text-brand-paper/35">
                 Look for the ⚡ in the bottom-right corner of every page
@@ -324,24 +329,15 @@ export default function Home() {
                   />
                 </div>
                 <div className="grid gap-6 content-start">
-                  <div className="rounded-[28px] bg-grey-light p-6">
-                    <p className="bauhaus-kicker text-ink/55">Looking to Escape</p>
-                    <p className="mt-3 font-heading text-[1.5rem] uppercase leading-[0.95] tracking-[-0.04em] text-brand-black">
-                      Come Play in the Pocket
-                    </p>
-                    <p className="mt-3 font-body text-sm leading-relaxed text-ink/70">
-                      Only 25 mins from Gold Coast Airport &amp; Ballina Airport
-                    </p>
-                    <a href="https://sanctuaryinthepocket.com.au" target="_blank" rel="noopener noreferrer" className="btn mt-4 inline-block text-xs">
-                      View Sanctuary
-                    </a>
-                  </div>
+                  <ParallaxCard />
                   <div className="rounded-[28px] bg-brand-black p-6">
-                    <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-gold">ZiggyZap says</p>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-brand-paper/60">ZiggyZap says</p>
                     <p className="mt-3 font-body text-sm leading-relaxed text-brand-paper/80">
                       &ldquo;This site runs on AI and human collaboration. Ask me anything — I&apos;ve been briefed.&rdquo;
                     </p>
-                    <ZiggyOpenButton label="Chat with ZiggyZap ⚡" />
+                    <div className="mt-6">
+                      <ZiggyOpenButton label="Chat with ZiggyZap ⚡" modalMode />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -352,16 +348,15 @@ export default function Home() {
         {/* ── THOUGHT GARDEN ───────────────────────────────────────────────── */}
         <section className="border-y-2 border-brand-black bg-brand-paper py-16 sm:py-24">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <p className="bauhaus-kicker text-ink/55">Thought Garden</p>
-                <h2 className="mt-3 font-heading text-[2.2rem] uppercase leading-[0.9] tracking-[-0.05em] text-brand-black sm:text-[3.2rem]">
-                  From Messy to Magnetic
-                </h2>
-              </div>
-              <p className="max-w-xl font-body text-base leading-relaxed text-ink/75 sm:text-lg">
-                Curious rabbit holes and practical ideas you can use today. Not everything here will make sense. That&apos;s kind of the point.
-              </p>
+            <div className="mb-10 max-w-4xl">
+              <p className="bauhaus-kicker text-ink/55">Featured Writing</p>
+              <h2 className="mt-3 font-display text-[2.8rem] leading-tight tracking-[-0.02em] text-brand-black sm:text-[4rem]">
+                Thought Garden
+              </h2>
+              <h3 className="mt-2 font-display text-[1.6rem] leading-snug text-brand-black sm:text-[2.2rem]">
+                From Method to Magnetic
+              </h3>
+              <p className="mt-4 font-ui text-base text-ink/70">Curious rabbit holes.</p>
             </div>
 
             <div className="grid gap-8 lg:grid-cols-3">
@@ -378,8 +373,8 @@ export default function Home() {
                       />
                     </div>
                     <div className="p-6 sm:p-7">
-                      <p className="bauhaus-kicker text-ink/45">{post.category} · {new Date(post.date).toLocaleDateString("en-AU", { month: "short", year: "numeric" })}</p>
-                      <h3 className="mt-3 font-heading text-[1.5rem] uppercase leading-[0.92] tracking-[-0.04em] text-brand-black transition-colors duration-200 group-hover:text-gold">
+                      <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold">{post.category}</p>
+                      <h3 className="mt-3 font-heading text-[1.4rem] leading-[1.05] tracking-[-0.03em] text-brand-black transition-colors duration-200 group-hover:text-gold">
                         {post.title}
                       </h3>
                       <p className="mt-4 font-body text-base leading-relaxed text-ink/70">{post.excerpt}</p>
@@ -398,10 +393,20 @@ export default function Home() {
         </section>
 
         {/* ── CONTACT CTA ──────────────────────────────────────────────────── */}
-        <section className="bg-brand-paper py-16 sm:py-24">
-          <div className="mx-auto max-w-5xl px-6 lg:px-10">
-            <div className="rounded-[32px] bg-grey-light p-8 sm:p-12">
-              <div className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
+        <section className="relative bg-brand-paper py-16 sm:py-24">
+          <div className="absolute inset-0 overflow-hidden">
+            <Image
+              src="/images/hero-home.jpg"
+              alt=""
+              fill
+              className="object-cover"
+              priority={false}
+            />
+            <div className="absolute inset-0 bg-brand-paper/90" />
+          </div>
+          <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-10">
+            <div className="mx-auto max-w-3xl">
+              <div className="rounded-[32px] bg-brand-paper/95 p-8 sm:p-12">
                 <div>
                   <p className="bauhaus-kicker text-brand-black/55">Contact &amp; Next Steps</p>
                   <h2 className="mt-4 font-heading text-[2.2rem] uppercase leading-[0.9] tracking-[-0.05em] text-brand-black sm:text-[3.1rem]">
@@ -413,15 +418,11 @@ export default function Home() {
                   <p className="mt-3 max-w-2xl font-body text-base leading-relaxed text-brand-black/80 sm:text-lg">
                     We&apos;ll map the fastest path from chaos to clarity.
                   </p>
-                </div>
-
-                <div className="grid gap-4">
-                  <Link href="/contact" className="btn btn-filled justify-center">
-                    Schedule Now
-                  </Link>
-                  <Link href="/blog" className="btn justify-center bg-transparent">
-                    Explore My Thinking
-                  </Link>
+                  <div className="mt-8">
+                    <Link href="/contact" className="btn btn-filled">
+                      Schedule Now
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
