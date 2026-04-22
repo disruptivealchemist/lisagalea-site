@@ -24,8 +24,8 @@ const certificationBadges = [
 
 const services = [
   {
-    tag: "AI for Leaders",
-    heading: "Build Teams That Thrive",
+    tag: "AI for Teams",
+    heading: "Build teams\nthat thrive",
     body: "Inject AI, emotional intelligence, and behavioural insight into your business. Build teams that adapt, collaborate, and lead with clarity.",
     cta: "Discover AiMegos",
     href: "https://aimegos.com",
@@ -34,8 +34,8 @@ const services = [
     imageAlt: "AI leadership training with Lisa Galea",
   },
   {
-    tag: "Retreats & Offsites — Byron Bay",
-    heading: "Escape the Ordinary",
+    tag: "Retreats & Offsites",
+    heading: "Escape the\nordinary",
     body: "Nature-anchored immersion in Byron Bay for senior teams. Reset, realign, and return with a decision rhythm that sticks.",
     cta: "Explore Retreat Dates",
     href: "https://sanctuaryinthepocket.com.au",
@@ -44,8 +44,8 @@ const services = [
     imageAlt: "Sanctuary in the Pocket Byron Bay retreats",
   },
   {
-    tag: "Consulting & Facilitation",
-    heading: "Crowd Pleasers",
+    tag: "Speaking and Events",
+    heading: "Crowd\npleasers",
     body: "Want to inspire bold thinking and real change? Lisa delivers talks and masterclasses that spark imagination and challenge assumptions.",
     cta: "Book a Speaking Enquiry",
     href: "/contact",
@@ -69,15 +69,15 @@ export default function Home() {
           <div className="mx-auto max-w-7xl">
             <div className="max-w-5xl">
               <p className="bauhaus-kicker text-ink/55">Creative Leadership / Human-Centred AI</p>
-              <h1 className="mt-6 font-heading text-[2.2rem] uppercase leading-[0.88] tracking-[-0.06em] text-brand-black sm:text-[3.2rem] lg:text-[4.1rem]">
-                The Art and Science of Play
+              <h1 className="mt-6 font-display text-[48px] leading-[1.2] tracking-[-0.02em] text-brand-black sm:text-[56px] lg:text-[64px]">
+                Creative leadership humans into the AI.
               </h1>
-              <p className="mt-5 font-heading text-xl uppercase tracking-[-0.03em] text-gold sm:text-2xl">
-                More brains. Less bollocks. All heart.
-              </p>
-              <p className="mt-6 max-w-4xl font-body text-lg leading-relaxed text-ink/78 sm:text-xl">
-                Play-based, science-backed leadership that turns chaos into confident decisions — plus practical AI your team will actually use.
-              </p>
+              <h3 className="mt-5 font-heading text-xl uppercase tracking-[-0.03em] text-gold sm:text-2xl">
+                More brains, less bollocks, all hearts.
+              </h3>
+              <h2 className="mt-6 font-heading text-[23px] leading-[1.3] tracking-[-0.02em] text-brand-black">
+                Play-based, sign-based leadership. Chaos into confidence decisions.
+              </h2>
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link href="/services" className="btn btn-filled">
                   Explore Services
@@ -179,8 +179,8 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="bauhaus-kicker text-ink/55">Play to win</p>
-                  <h2 className="mt-3 font-heading text-[2rem] uppercase leading-[0.92] tracking-[-0.05em] text-brand-black sm:text-[2.8rem]">
-                    I help business leaders, serial entrepreneurs and executive teams amplify with AI without losing the human magic.
+                  <h2 className="mt-3 font-heading text-[21px] leading-[1.3] tracking-[-0.02em] text-brand-black sm:text-[24px]">
+                    I help <strong>business leaders</strong>, <strong>serial entrepreneurs</strong> and <strong>executive teams</strong> <strong>amplify with AI</strong> without losing the <strong>human magic</strong>.
                   </h2>
                   <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-ink/80 sm:text-xl">
                     Because in this tech super-cycle, curiosity is currency and those who play, win.
@@ -243,15 +243,13 @@ export default function Home() {
         {/* ── CHOOSE YOUR ADVENTURE ────────────────────────────────────────── */}
         <section className="relative overflow-hidden bg-brand-paper py-16 sm:py-24">
           <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <p className="bauhaus-kicker text-ink/55">Work with me</p>
-                <h2 className="mt-3 font-heading text-[2.2rem] uppercase leading-[0.9] tracking-[-0.05em] text-brand-black sm:text-[3.2rem]">
-                  Choose Your Adventure
-                </h2>
-              </div>
-              <p className="max-w-xl font-body text-base leading-relaxed text-ink/75 sm:text-lg">
-                Curious minds welcome. The brave, the unconventional, the quietly brilliant. This is your playground.
+            <div className="mb-10 text-center">
+              <p className="bauhaus-kicker text-ink/55">Work with me</p>
+              <h2 className="mt-3 font-heading text-[15pt] uppercase leading-[0.9] tracking-[-0.05em] text-brand-black sm:text-[18pt]">
+                Choose Your Adventure
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-ink/75 sm:text-lg">
+                Curious minds welcome the brave. The unconventional. The quietly brilliant. This is your playground.
               </p>
             </div>
 
@@ -268,8 +266,8 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6 sm:p-7">
-                    <p className="bauhaus-kicker text-ink/55">{service.tag}</p>
-                    <h3 className="mt-4 font-heading text-[1.7rem] uppercase leading-[0.92] tracking-[-0.04em] text-brand-black">
+                    <p className={`text-[12px] uppercase tracking-[0.2em] font-mono ${["AI for Teams", "Retreats & Offsites"].includes(service.tag) ? "text-gold" : "text-ink/55"}`}>{service.tag}</p>
+                    <h3 className="mt-4 font-heading text-[1.5rem] leading-[1.2] tracking-[-0.02em] text-brand-black whitespace-pre-line">
                       {service.heading}
                     </h3>
                     <p className="mt-4 font-body text-base leading-relaxed text-ink/72">{service.body}</p>
@@ -294,14 +292,14 @@ export default function Home() {
         {/* ── AI EXPLORATION ───────────────────────────────────────────────── */}
         <section className="bg-canvas py-16 sm:py-24">
           <div className="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-6 lg:px-10">
-            <div className="col-span-12 lg:col-span-5">
+            <div className="col-span-12 lg:col-span-8">
               <div className="h-full">
                 <p className="bauhaus-kicker text-ink/55">AI Exploration</p>
-                <h2 className="mt-4 font-heading text-[2.1rem] uppercase leading-[0.9] tracking-[-0.05em] text-brand-black sm:text-[3rem]">
-                  Welcome to a space where creativity meets strategic intelligence.
+                <h2 className="mt-4 font-heading text-[2.4rem] leading-[0.95] tracking-[-0.03em] text-brand-black sm:text-[3.2rem]">
+                  Reframe Perception.
                 </h2>
-                <h3 className="mt-4 font-heading text-[1.6rem] uppercase leading-[0.92] tracking-[-0.04em] text-brand-black sm:text-[2.3rem]">
-                  Recognise patterns. Reframe perception. Redefine possibility.
+                <h3 className="mt-4 font-heading text-[1.4rem] leading-[1.2] tracking-[-0.01em] text-brand-black sm:text-[1.8rem]">
+                  Welcome to the sanctuary.
                 </h3>
                 <p className="mt-6 font-body text-base leading-relaxed text-ink/75 sm:text-lg">
                   Almost 2.5 years ago, I started experimenting with AI. Mind blown by MidJourney&apos;s capacity, I dove deep. A few weeks later, a YouTube video on email automation sent my mind into hyperdrive — I saw the limitless potential of AI, not just as a tool but as an extension of my creative thinking.
@@ -317,8 +315,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-span-12 lg:col-span-7">
-              <div className="grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
+            <div className="col-span-12 lg:col-span-4">
+              <div className="grid gap-6">
                 <div className="relative min-h-[22rem] overflow-hidden rounded-[28px] bg-grey-light sm:min-h-[30rem]">
                   <Image
                     src="/images/ai-section.jpg"

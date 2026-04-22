@@ -1,0 +1,42 @@
+[     125ms] [ERROR] Loading the stylesheet 'https://use.typekit.net/tfg1dup.css' violates the following Content Security Policy directive: "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com". Note that 'style-src-elem' was not explicitly set, so 'style-src' is used as a fallback. The action has been blocked. @ http://localhost:3000/:0
+[     125ms] [ERROR] Loading the stylesheet 'https://use.typekit.net/tfg1dup.css' violates the following Content Security Policy directive: "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com". Note that 'style-src-elem' was not explicitly set, so 'style-src' is used as a fallback. The action has been blocked. @ http://localhost:3000/:0
+[     235ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[     271ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[     432ms] [WARNING] Image with src "/images/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[     601ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseLeave (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:363:29)
+[    2023ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseEnter (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:351:29)
+[    3819ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseLeave (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:363:29)
+[   34904ms] [WARNING] Image with src "/images/sanctuary-retreat.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   46791ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseEnter (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:351:29)
+[   57334ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseLeave (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:363:29)
+[   59474ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseEnter (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:351:29)
+[   59481ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseLeave (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:363:29)
+[   60365ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseEnter (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:351:29)
+[   60366ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseLeave (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:363:29)
+[   60398ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseEnter (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:351:29)
+[   60398ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseLeave (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:363:29)
+[ 2964745ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseEnter (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:351:29)
+[ 2964756ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseLeave (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:363:29)
+[ 4667282ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseEnter (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:351:29)
+[ 4667287ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseLeave (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:363:29)
+[ 4667321ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseEnter (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:351:29)
+[ 4667321ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseLeave (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:363:29)
+[14541328ms] TypeError: target.closest is not a function
+    at HTMLDocument.onMouseEnter (http://localhost:3000/_next/static/chunks/src_0.z-x.7._.js:351:29)

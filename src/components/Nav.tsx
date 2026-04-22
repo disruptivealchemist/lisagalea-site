@@ -33,7 +33,7 @@ export function Nav() {
                 width={190}
                 height={56}
                 priority
-                className="h-auto w-[150px] sm:w-[190px]"
+                className="h-auto w-[75px] sm:w-[95px]"
               />
             </Link>
           </div>
@@ -43,7 +43,7 @@ export function Nav() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="font-ui text-[10px] uppercase tracking-[0.28em] text-brand-black transition-colors duration-200 hover:text-gold"
+                  className="font-ui text-[20px] uppercase tracking-[0.28em] text-brand-black transition-colors duration-200 hover:text-gold"
                 >
                   {link.label}
                 </Link>

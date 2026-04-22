@@ -1,0 +1,214 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation "Main navigation" [ref=e4]:
+      - link "Lisa Galea — Home" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "Lisa Galea logo" [ref=e7]
+      - list [ref=e8]:
+        - listitem [ref=e9]:
+          - link "About" [ref=e10] [cursor=pointer]:
+            - /url: /about
+        - listitem [ref=e11]:
+          - link "Services" [ref=e12] [cursor=pointer]:
+            - /url: /services
+        - listitem [ref=e13]:
+          - link "Thoughts" [ref=e14] [cursor=pointer]:
+            - /url: /blog
+        - listitem [ref=e15]:
+          - link "Contact" [ref=e16] [cursor=pointer]:
+            - /url: /contact
+      - link "Book a Call" [ref=e18] [cursor=pointer]:
+        - /url: /contact
+  - main [ref=e19]:
+    - generic [ref=e22]:
+      - paragraph [ref=e23]: Creative Leadership / Human-Centred AI
+      - heading "The Art and Science of Play" [level=1] [ref=e24]
+      - paragraph [ref=e25]: More brains. Less bollocks. All heart.
+      - paragraph [ref=e26]: Play-based, science-backed leadership that turns chaos into confident decisions — plus practical AI your team will actually use.
+      - generic [ref=e27]:
+        - link "Explore Services" [ref=e28] [cursor=pointer]:
+          - /url: /services
+        - link "Book a Clarity Call" [ref=e29] [cursor=pointer]:
+          - /url: /contact
+    - list [ref=e32]:
+      - listitem [ref=e33]:
+        - img "Ogilvy Behavioural Economics" [ref=e35]
+        - paragraph [ref=e36]: Ogilvy Behavioural Economics
+      - listitem [ref=e37]:
+        - img "Brené Brown Leadership Training" [ref=e39]
+        - paragraph [ref=e40]: Brené Brown Leadership Training
+      - listitem [ref=e41]:
+        - img "Master Behavioural Science, Advertising" [ref=e43]
+        - paragraph [ref=e44]: Master Behavioural Science, Advertising
+      - listitem [ref=e45]:
+        - img "Cannes Lions Behavioural Science Branding" [ref=e47]
+        - paragraph [ref=e48]: Cannes Lions Behavioural Science Branding
+      - listitem [ref=e49]:
+        - img "Truth Plane Body Language for Business" [ref=e51]
+        - paragraph [ref=e52]: Truth Plane Body Language for Business
+    - generic [ref=e54]:
+      - generic [ref=e55]:
+        - generic [ref=e57]: ⚡
+        - paragraph [ref=e58]: ZiggyZap // AI Concierge
+        - heading "Your Guide to Lisa's World" [level=2] [ref=e59]
+        - paragraph [ref=e60]: ZiggyZap is a Bowie–Warhol–Westwood mashup with a Master's in making things click. She knows Lisa's world inside out — ask her anything, take the quiz, or get routed to exactly the right place.
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - paragraph [ref=e63]: "01"
+          - heading "Ask Anything" [level=3] [ref=e64]
+          - paragraph [ref=e65]: Services, pricing (she'll route you), Lisa's story, speaking enquiries — ZiggyZap knows the territory.
+        - generic [ref=e66]:
+          - paragraph [ref=e67]: "02"
+          - heading "Take the Quiz" [level=3] [ref=e68]
+          - paragraph [ref=e69]: 15 questions. Behavioural science. No fluff. Score yourself and get your cheat sheet — straight to your inbox.
+        - generic [ref=e70]:
+          - paragraph [ref=e71]: "03"
+          - heading "Find Your Path" [level=3] [ref=e72]
+          - paragraph [ref=e73]: Not sure where to start? Tell ZiggyZap what you need and she'll route you straight to the right door.
+      - generic [ref=e74]:
+        - button "⚡ Say Hello to ZiggyZap" [ref=e75] [cursor=pointer]
+        - paragraph [ref=e76]: Look for the ⚡ in the bottom-right corner of every page
+    - generic [ref=e78]:
+      - generic [ref=e80]:
+        - img "Lisa Galea, MBSc — Disruptive Alchemist" [ref=e82]
+        - generic [ref=e83]:
+          - paragraph [ref=e84]: Play to win
+          - heading "I help business leaders, serial entrepreneurs and executive teams amplify with AI without losing the human magic." [level=2] [ref=e85]
+          - paragraph [ref=e86]: Because in this tech super-cycle, curiosity is currency and those who play, win.
+          - paragraph [ref=e87]: Together, we explore complexity with clarity by blending behavioural science, emotional intelligence, and future-thinking to shape ideas that matter.
+          - paragraph [ref=e88]: This isn't about more information. It's about better questions, clearer direction, and the confidence to lead in your own way.
+          - link "Discover My Story" [ref=e90] [cursor=pointer]:
+            - /url: /about
+      - generic [ref=e92]:
+        - img "Lisa Galea — creative leadership consultant and AI strategist" [ref=e95]
+        - generic [ref=e96]:
+          - paragraph [ref=e97]: Turn What If Into Why Not
+          - paragraph [ref=e98]: “Lisa is a burst of creative inspiration and big-picture thinking, yet her strategies are unique, actionable and results driven.”
+          - paragraph [ref=e99]: ★★★★★
+    - generic [ref=e101]:
+      - paragraph [ref=e102]: “Enjoy life. This is not a dress rehearsal.”
+      - paragraph [ref=e103]: Friedrich Nietzsche
+    - generic [ref=e105]:
+      - generic [ref=e106]:
+        - generic [ref=e107]:
+          - paragraph [ref=e108]: Work with me
+          - heading "Choose Your Adventure" [level=2] [ref=e109]
+        - paragraph [ref=e110]: Curious minds welcome. The brave, the unconventional, the quietly brilliant. This is your playground.
+      - generic [ref=e111]:
+        - article [ref=e112]:
+          - img "AI leadership training with Lisa Galea" [ref=e114]
+          - generic [ref=e115]:
+            - paragraph [ref=e116]: AI for Leaders
+            - heading "Build Teams That Thrive" [level=3] [ref=e117]
+            - paragraph [ref=e118]: Inject AI, emotional intelligence, and behavioural insight into your business. Build teams that adapt, collaborate, and lead with clarity.
+            - link "Discover AiMegos" [ref=e120] [cursor=pointer]:
+              - /url: https://aimegos.com
+        - article [ref=e121]:
+          - img "Sanctuary in the Pocket Byron Bay retreats" [ref=e123]
+          - generic [ref=e124]:
+            - paragraph [ref=e125]: Retreats & Offsites — Byron Bay
+            - heading "Escape the Ordinary" [level=3] [ref=e126]
+            - paragraph [ref=e127]: Nature-anchored immersion in Byron Bay for senior teams. Reset, realign, and return with a decision rhythm that sticks.
+            - link "Explore Retreat Dates" [ref=e129] [cursor=pointer]:
+              - /url: https://sanctuaryinthepocket.com.au
+        - article [ref=e130]:
+          - img "Lisa Galea keynote speaking and facilitation" [ref=e132]
+          - generic [ref=e133]:
+            - paragraph [ref=e134]: Consulting & Facilitation
+            - heading "Crowd Pleasers" [level=3] [ref=e135]
+            - paragraph [ref=e136]: Want to inspire bold thinking and real change? Lisa delivers talks and masterclasses that spark imagination and challenge assumptions.
+            - link "Book a Speaking Enquiry" [ref=e138] [cursor=pointer]:
+              - /url: /contact
+    - generic [ref=e140]:
+      - generic [ref=e142]:
+        - paragraph [ref=e143]: AI Exploration
+        - heading "Welcome to a space where creativity meets strategic intelligence." [level=2] [ref=e144]
+        - heading "Recognise patterns. Reframe perception. Redefine possibility." [level=3] [ref=e145]
+        - paragraph [ref=e146]: Almost 2.5 years ago, I started experimenting with AI. Mind blown by MidJourney's capacity, I dove deep. A few weeks later, a YouTube video on email automation sent my mind into hyperdrive — I saw the limitless potential of AI, not just as a tool but as an extension of my creative thinking.
+        - paragraph [ref=e147]: In November 2022, I fully embraced AI and automation, realising AI could finally help my marvellous mind get things done.
+        - link "Discover My Story" [ref=e149] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e151]:
+        - img "Lisa Galea exploring AI and creative leadership" [ref=e153]
+        - generic [ref=e154]:
+          - generic [ref=e155]:
+            - img "Sanctuary in the Pocket retreat" [ref=e157]
+            - paragraph [ref=e158]: Looking to Escape
+            - paragraph [ref=e159]: Come Play in the Pocket
+            - paragraph [ref=e160]: Only 25 mins from Gold Coast Airport & Ballina Airport
+            - link "View Sanctuary" [ref=e161] [cursor=pointer]:
+              - /url: https://sanctuaryinthepocket.com.au
+          - generic [ref=e162]:
+            - paragraph [ref=e163]: ZiggyZap says
+            - paragraph [ref=e164]: “This site runs on AI and human collaboration. Ask me anything — I've been briefed.”
+            - button "Chat with ZiggyZap ⚡" [ref=e166] [cursor=pointer]
+    - generic [ref=e168]:
+      - generic [ref=e169]:
+        - paragraph [ref=e170]: Featured Writing
+        - heading "Thought Garden" [level=2] [ref=e171]
+        - heading "From Method to Magnetic" [level=3] [ref=e172]
+        - paragraph [ref=e173]: Curious rabbit holes.
+      - generic [ref=e174]:
+        - article [ref=e175]:
+          - 'link "Lisa Galea on embodied leadership and somatic intelligence Leadership The Embodied Mind: Why Your Body Is Your Best Business Tool We’ve been trained to live from the neck up. But the most effective leaders I know lead from the whole body — gut, heart, and head in concert." [ref=e176] [cursor=pointer]':
+            - /url: /blog/embodied-mind
+            - img "Lisa Galea on embodied leadership and somatic intelligence" [ref=e178]
+            - generic [ref=e179]:
+              - paragraph [ref=e180]: Leadership
+              - 'heading "The Embodied Mind: Why Your Body Is Your Best Business Tool" [level=3] [ref=e181]'
+              - paragraph [ref=e182]: We’ve been trained to live from the neck up. But the most effective leaders I know lead from the whole body — gut, heart, and head in concert.
+        - article [ref=e183]:
+          - 'link "Rethinking risk and bold leadership strategy Strategy Rethinking Risk: Why Playing It Safe Is the Riskiest Move of All The business graveyard is full of companies that played it safe — Kodak, Blockbuster, Borders. Caution isn’t a strategy. Intelligent risk-taking is." [ref=e184] [cursor=pointer]':
+            - /url: /blog/rethinking-risk
+            - img "Rethinking risk and bold leadership strategy" [ref=e186]
+            - generic [ref=e187]:
+              - paragraph [ref=e188]: Strategy
+              - 'heading "Rethinking Risk: Why Playing It Safe Is the Riskiest Move of All" [level=3] [ref=e189]'
+              - paragraph [ref=e190]: The business graveyard is full of companies that played it safe — Kodak, Blockbuster, Borders. Caution isn’t a strategy. Intelligent risk-taking is.
+        - article [ref=e191]:
+          - 'link "Self-aware intelligence and AI literacy for leaders AI & Technology Self-Aware Intelligence: Teaching AI to Know What It Doesn’t Know The most dangerous AI isn’t malevolent — it’s confidently wrong. Here’s what leaders need to understand about AI epistemic humility." [ref=e192] [cursor=pointer]':
+            - /url: /blog/sai-learning
+            - img "Self-aware intelligence and AI literacy for leaders" [ref=e194]
+            - generic [ref=e195]:
+              - paragraph [ref=e196]: AI & Technology
+              - 'heading "Self-Aware Intelligence: Teaching AI to Know What It Doesn’t Know" [level=3] [ref=e197]'
+              - paragraph [ref=e198]: The most dangerous AI isn’t malevolent — it’s confidently wrong. Here’s what leaders need to understand about AI epistemic humility.
+      - link "Explore the Thought Garden" [ref=e200] [cursor=pointer]:
+        - /url: /blog
+    - generic [ref=e207]:
+      - paragraph [ref=e208]: Contact & Next Steps
+      - heading "Ready to trade pressure for progress?" [level=2] [ref=e209]
+      - paragraph [ref=e210]: Bring your toughest leadership or AI decision to a 20-minute Clarity Call.
+      - paragraph [ref=e211]: We'll map the fastest path from chaos to clarity.
+      - link "Schedule Now" [ref=e213] [cursor=pointer]:
+        - /url: /contact
+  - contentinfo "Site footer" [ref=e214]:
+    - generic [ref=e215]:
+      - generic [ref=e216]:
+        - paragraph [ref=e217]: Get in touch
+        - heading "Connect" [level=2] [ref=e218]
+      - generic [ref=e219]:
+        - link "Follow on LinkedIn" [ref=e220] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/lisagalea/
+          - text: LinkedIn
+        - link "Follow on Instagram" [ref=e221] [cursor=pointer]:
+          - /url: https://www.instagram.com/thelisagalea/
+          - text: Instagram
+        - link "Follow on X" [ref=e222] [cursor=pointer]:
+          - /url: https://twitter.com/thelisagalea
+          - text: X
+        - link "Follow on YouTube" [ref=e223] [cursor=pointer]:
+          - /url: https://www.youtube.com/@thelisagalea
+          - text: YouTube
+    - generic [ref=e225]:
+      - paragraph [ref=e226]: Lisa Galea Consulting Pty Ltd © 2026 - ABN 15 654 048 503
+      - list [ref=e227]:
+        - listitem [ref=e228]:
+          - link "Terms & Conditions" [ref=e229] [cursor=pointer]:
+            - /url: /terms
+        - listitem [ref=e230]:
+          - link "Privacy Policy" [ref=e231] [cursor=pointer]:
+            - /url: /privacy
+  - generic "Chat with ZiggyZap" [ref=e232]:
+    - button "Chat with ZiggyZap" [ref=e233] [cursor=pointer]:
+      - generic: ZZ
