@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Session Reports
+
+| Date | Report |
+|---|---|
+| 2026-04-04 | [SESSION-COMPLETE-2026-04-04.md](SESSION-COMPLETE-2026-04-04.md) |
+| 2026-04-24 | [SESSION-COMPLETE-2026-04-24.md](SESSION-COMPLETE-2026-04-24.md) — CMS-ready content architecture + Builder.io wiring |
+
 ## Getting Started
 
 ### Environment
@@ -22,6 +29,23 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Builder.io Visual Builder
+
+This repo now supports Builder pages via App Router catch-all routing:
+
+- Route: `src/app/[...builderPath]/page.tsx`
+- Fetch helper: `src/lib/builder.ts`
+- Renderer: `src/components/BuilderPage.tsx`
+
+To use it:
+
+1. Add `NEXT_PUBLIC_BUILDER_API_KEY` to `.env.local`.
+2. In Builder.io, create/edit entries in the `page` model.
+3. Set the Builder Preview URL to `http://localhost:3000` for local editing.
+4. Publish and visit the matching URL path in your app.
+
+Existing explicit Next.js routes (for example `/about`, `/services`, etc.) still take precedence over the catch-all route.
 
 ## Agents (multi-agent team)
 
