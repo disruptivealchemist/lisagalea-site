@@ -6,6 +6,12 @@
  * Floating chat widget. Bottom-right. Opens from a pulsing avatar button.
  * Streams responses from /api/chat. Cannes-quality visual craft.
  *
+ * WCAG AA Accessible:
+ * - Focus trap in modal (keyboard navigation)
+ * - Live region status updates
+ * - Full keyboard support (Escape to close)
+ * - Speech-to-text via Web Speech API
+ *
  * Special triggers:
  * - Glitch Mode: hover any .btn for >5s → widget opens with glitch greeting
  * - Bugged Out: user types "help" or "support" → joke then real help
@@ -21,6 +27,11 @@ interface Message {
   role: "user" | "assistant";
   content: string;
   pending?: boolean; // true while streaming
+}
+
+interface FocusTrapElements {
+  firstElement: HTMLElement | null;
+  lastElement: HTMLElement | null;
 }
 
 // ── Markdown-lite renderer ────────────────────────────────────────────────────
@@ -78,17 +89,130 @@ export function ZiggyZap() {
   const [avatarJiggle, setAvatarJiggle] = useState(false);
   const [leadEmailPending, setLeadEmailPending] = useState(false);
   const [quizScore, setQuizScore] = useState<number | null>(null);
+  const [statusMessage, setStatusMessage] = useState<string>("");
+  const [isListening, setIsListening] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const glitchTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hasGreeted = useRef(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const modalPanelRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<SpeechRecognition | null>(null);
 
   // ── Auto-scroll ──────────────────────────────────────────────────────────────
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  // ── Focus trap for modal (WCAG 2.4.3) ──────────────────────────────────────────
+
+  useEffect(() => {
+    if (!modalOpen || !modalPanelRef.current) return;
+
+    function getFocusableElements(element: HTMLElement): HTMLElement[] {
+      const selector = [
+        "a[href]",
+        "button:not([disabled])",
+        "textarea:not([disabled])",
+        "input[type='text']:not([disabled])",
+        "[tabindex]:not([tabindex='-1'])",
+      ].join(",");
+      return Array.from(element.querySelectorAll(selector));
+    }
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setModalOpen(false);
+        return;
+      }
+
+      if (e.key === "Tab") {
+        const focusableElements = getFocusableElements(modalPanelRef.current!);
+        if (focusableElements.length === 0) return;
+
+        const currentElement = document.activeElement as HTMLElement;
+        const currentIndex = focusableElements.indexOf(currentElement);
+
+        if (e.shiftKey) {
+          // Shift+Tab: move backward
+          if (currentIndex <= 0) {
+            e.preventDefault();
+            focusableElements[focusableElements.length - 1]?.focus();
+          }
+        } else {
+          // Tab: move forward
+          if (currentIndex >= focusableElements.length - 1) {
+            e.preventDefault();
+            focusableElements[0]?.focus();
+          }
+        }
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    // Focus first focusable element in modal
+    const focusableElements = getFocusableElements(modalPanelRef.current);
+    focusableElements[0]?.focus();
+
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [modalOpen]);
+
+  // ── Keyboard support for floating panel (Escape key) ───────────────────────────
+
+  useEffect(() => {
+    if (!open || modalOpen) return; // Only for floating panel, not modal
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open, modalOpen]);
+
+  // ── Web Speech API initialization ─────────────────────────────────────────────
+
+  useEffect(() => {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) return; // Browser doesn't support Web Speech API
+
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = "en-US";
+
+    recognition.onstart = () => {
+      setIsListening(true);
+      setStatusMessage("Listening... Please speak into your microphone.");
+    };
+
+    recognition.onend = () => {
+      setIsListening(false);
+      setStatusMessage("");
+    };
+
+    recognition.onerror = (event: any) => {
+      setStatusMessage(`Voice input error: ${event.error}. Please try typing instead.`);
+      setIsListening(false);
+    };
+
+    recognition.onresult = (event: any) => {
+      let transcript = "";
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        transcript += event.results[i][0].transcript;
+      }
+      if (transcript.trim()) {
+        setInput(transcript.trim());
+        setStatusMessage("Voice input received. Press send to post your message.");
+      }
+    };
+
+    recognitionRef.current = recognition;
+  }, []);
 
   // ── Greeting on first open ───────────────────────────────────────────────────
 
@@ -336,6 +460,22 @@ export function ZiggyZap() {
     }
   }
 
+  // ── Voice input handler ──────────────────────────────────────────────────────
+
+  function handleVoiceInput() {
+    if (!recognitionRef.current) {
+      setStatusMessage("Voice input not supported on this browser. Please use Chrome, Edge, or Safari.");
+      return;
+    }
+
+    if (isListening) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+    } else {
+      recognitionRef.current.start();
+    }
+  }
+
   // ── Submit handler ───────────────────────────────────────────────────────────
 
   function handleSubmit(e: React.FormEvent) {
@@ -375,7 +515,8 @@ export function ZiggyZap() {
           className="zz-panel"
           role="dialog"
           aria-label="ZiggyZap AI Concierge"
-          aria-modal="false"
+          aria-modal="true"
+          ref={panelRef}
         >
           {/* Header */}
           <div className="zz-header">
@@ -423,6 +564,17 @@ export function ZiggyZap() {
             <div ref={messagesEndRef} />
           </div>
 
+          {/* Status/Live Region (WCAG 4.1.2) */}
+          <div
+            className="zz-live-region"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            aria-label="Status messages"
+          >
+            {statusMessage && <p>{statusMessage}</p>}
+          </div>
+
           {/* Input */}
           <form className="zz-input-row" onSubmit={handleSubmit} aria-label="Send a message">
             <input
@@ -436,6 +588,21 @@ export function ZiggyZap() {
               autoComplete={leadEmailPending ? "email" : "off"}
               aria-label="Your message"
             />
+            {/* Voice input button (if Web Speech API supported) */}
+            {typeof window !== "undefined" &&
+              ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition) && (
+                <button
+                  type="button"
+                  className={`zz-voice${isListening ? " zz-voice--active" : ""}`}
+                  onClick={handleVoiceInput}
+                  disabled={loading}
+                  aria-label={isListening ? "Stop listening" : "Speak to input"}
+                  title={isListening ? "Stop listening" : "Click to speak"}
+                  aria-pressed={isListening}
+                >
+                  🎤
+                </button>
+              )}
             <button
               type="submit"
               className="zz-send"
@@ -465,6 +632,7 @@ export function ZiggyZap() {
             role="dialog"
             aria-label="ZiggyZap Chat"
             aria-modal="true"
+            ref={modalPanelRef}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
@@ -522,6 +690,17 @@ export function ZiggyZap() {
               <div ref={messagesEndRef} />
             </div>
 
+            {/* Status/Live Region (WCAG 4.1.2) */}
+            <div
+              className="zz-live-region"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+              aria-label="Status messages"
+            >
+              {statusMessage && <p>{statusMessage}</p>}
+            </div>
+
             {/* Input */}
             <form className="zz-input-row" onSubmit={handleSubmit} aria-label="Send a message">
               <input
@@ -535,6 +714,21 @@ export function ZiggyZap() {
                 autoComplete={leadEmailPending ? "email" : "off"}
                 aria-label="Your message"
               />
+              {/* Voice input button (if Web Speech API supported) */}
+              {typeof window !== "undefined" &&
+                ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition) && (
+                  <button
+                    type="button"
+                    className={`zz-voice${isListening ? " zz-voice--active" : ""}`}
+                    onClick={handleVoiceInput}
+                    disabled={loading}
+                    aria-label={isListening ? "Stop listening" : "Speak to input"}
+                    title={isListening ? "Stop listening" : "Click to speak"}
+                    aria-pressed={isListening}
+                  >
+                    🎤
+                  </button>
+                )}
               <button
                 type="submit"
                 className="zz-send"
