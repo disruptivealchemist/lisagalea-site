@@ -19,6 +19,7 @@
  */
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import Link from "next/link";
 import { getRandomGreeting } from "@/lib/ziggyzap/persona";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -27,11 +28,6 @@ interface Message {
   role: "user" | "assistant";
   content: string;
   pending?: boolean; // true while streaming
-}
-
-interface FocusTrapElements {
-  firstElement: HTMLElement | null;
-  lastElement: HTMLElement | null;
 }
 
 // ── Markdown-lite renderer ────────────────────────────────────────────────────
@@ -177,7 +173,7 @@ export function ZiggyZap() {
   // ── Web Speech API initialization ─────────────────────────────────────────────
 
   useEffect(() => {
-    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) return; // Browser doesn't support Web Speech API
 
     const recognition = new SpeechRecognition();
@@ -195,12 +191,12 @@ export function ZiggyZap() {
       setStatusMessage("");
     };
 
-    recognition.onerror = (event: any) => {
+    recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
       setStatusMessage(`Voice input error: ${event.error}. Please try typing instead.`);
       setIsListening(false);
     };
 
-    recognition.onresult = (event: any) => {
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
       let transcript = "";
       for (let i = event.resultIndex; i < event.results.length; i++) {
         transcript += event.results[i][0].transcript;
@@ -248,8 +244,8 @@ export function ZiggyZap() {
 
   useEffect(() => {
     function onMouseEnter(e: MouseEvent) {
-      const target = e.target as HTMLElement;
-      if (!target.closest(".btn")) return;
+      const target = e.target instanceof Element ? e.target : null;
+      if (!target?.closest(".btn")) return;
       glitchTimerRef.current = setTimeout(() => {
         if (!open) {
           setOpen(true);
@@ -259,8 +255,8 @@ export function ZiggyZap() {
     }
 
     function onMouseLeave(e: MouseEvent) {
-      const target = e.target as HTMLElement;
-      if (!target.closest(".btn")) return;
+      const target = e.target instanceof Element ? e.target : null;
+      if (!target?.closest(".btn")) return;
       if (glitchTimerRef.current) clearTimeout(glitchTimerRef.current);
     }
 
@@ -590,7 +586,7 @@ export function ZiggyZap() {
             />
             {/* Voice input button (if Web Speech API supported) */}
             {typeof window !== "undefined" &&
-              ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition) && (
+              (window.SpeechRecognition || window.webkitSpeechRecognition) && (
                 <button
                   type="button"
                   className={`zz-voice${isListening ? " zz-voice--active" : ""}`}
@@ -615,7 +611,7 @@ export function ZiggyZap() {
 
           {/* Footer */}
           <p className="zz-footer-note">
-            Powered by <a href="/about" className="zz-footer-link">Lisa Galea</a> &amp; Claude
+            Powered by <Link href="/about" className="zz-footer-link">Lisa Galea</Link> &amp; Claude
           </p>
         </div>
       )}
@@ -716,7 +712,7 @@ export function ZiggyZap() {
               />
               {/* Voice input button (if Web Speech API supported) */}
               {typeof window !== "undefined" &&
-                ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition) && (
+                (window.SpeechRecognition || window.webkitSpeechRecognition) && (
                   <button
                     type="button"
                     className={`zz-voice${isListening ? " zz-voice--active" : ""}`}
@@ -741,7 +737,7 @@ export function ZiggyZap() {
 
             {/* Footer */}
             <p className="zz-footer-note">
-              Powered by <a href="/about" className="zz-footer-link">Lisa Galea</a> &amp; Claude
+              Powered by <Link href="/about" className="zz-footer-link">Lisa Galea</Link> &amp; Claude
             </p>
           </div>
         </div>

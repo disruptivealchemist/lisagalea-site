@@ -8,6 +8,11 @@ import { getHomeContent } from "@/lib/cms/adapter";
 
 const content = getHomeContent();
 
+const testimonialPortraits: Record<string, string> = {
+  "James Emery": "/images/people/james-emery.jpg",
+  "Chris Do": "/images/people/chris-do.jpg",
+};
+
 export const metadata: Metadata = {
   title: content.meta.title,
   description: content.meta.description,
@@ -23,10 +28,27 @@ export default function Home() {
       <main className="overflow-hidden bg-brand-paper pt-28">
 
         {/* ── HERO ─────────────────────────────────────────────────────────── */}
-        <section className="relative px-6 pb-14 pt-10 sm:px-10 sm:pb-18 sm:pt-16">
+        <section className="relative overflow-hidden px-6 pb-14 pt-10 sm:px-10 sm:pb-18 sm:pt-16">
+          <div className="absolute inset-0 -z-10">
+            <Image
+              src="/images/hero-home.jpg"
+              alt=""
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "linear-gradient(240deg,#71a2c0 0%,rgba(39,38,38,0.34) 31%,rgba(239,198,51,0.65) 100%)",
+              }}
+            />
+          </div>
           <div className="mx-auto max-w-7xl">
             <div className="max-w-5xl">
-              <p className="bauhaus-kicker text-ink/55">{hero.kicker}</p>
+              <p className="bauhaus-kicker text-gold">{hero.kicker}</p>
               <h1 className="mt-6 font-display text-[48px] leading-[1.2] tracking-[-0.02em] text-brand-black sm:text-[56px] lg:text-[64px]">
                 {hero.heading}
               </h1>
@@ -67,7 +89,7 @@ export default function Home() {
         </section>
 
         {/* ── SOCIAL PROOF ─────────────────────────────────────────────────── */}
-        <section className="bg-canvas py-16 sm:py-24">
+        <section id="testimonials" className="bg-canvas py-16 sm:py-24">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <p className="bauhaus-kicker text-ink/55 mb-12">{socialProof.heading}</p>
 
@@ -95,19 +117,59 @@ export default function Home() {
                   </p>
                   <p className="bauhaus-kicker text-gold mb-3">{testimonial.title}</p>
                   <p className="font-body text-base text-ink/80 leading-relaxed mb-6">
-                    "{testimonial.quote}"
+                    &quot;{testimonial.quote}&quot;
                   </p>
-                  <footer>
-                    <p className="font-ui text-[11px] uppercase tracking-[0.22em] text-brand-black">
-                      {testimonial.name}
-                    </p>
-                    <p className="font-ui text-[10px] uppercase tracking-[0.18em] text-ink/50 mt-1">
-                      {testimonial.role}
-                    </p>
+                  <footer className="flex items-center gap-4">
+                    {testimonialPortraits[testimonial.name] && (
+                      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-grey-light">
+                        <Image
+                          src={testimonialPortraits[testimonial.name]}
+                          alt={`Portrait of ${testimonial.name}`}
+                          fill
+                          className="object-cover"
+                          sizes="56px"
+                        />
+                      </div>
+                    )}
+                    <div>
+                      <p className="font-ui text-[11px] uppercase tracking-[0.22em] text-brand-black">
+                        {testimonial.name}
+                      </p>
+                      <p className="font-ui text-[10px] uppercase tracking-[0.18em] text-ink/50 mt-1">
+                        {testimonial.role}
+                      </p>
+                    </div>
                   </footer>
                 </blockquote>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── NIETZSCHE QUOTE BAND ─────────────────────────────────────────── */}
+        <section
+          className="relative overflow-hidden bg-brand-black py-24 sm:py-32"
+          style={{
+            backgroundImage: "url('/images/lisa-galea-hero-joy.jpg')",
+            backgroundAttachment: "fixed",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundColor: "rgba(20,20,20,0.72)",
+            }}
+          />
+          <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+            <p className="font-display text-[2rem] leading-tight tracking-[-0.02em] text-brand-paper sm:text-[2.8rem]">
+              Enjoy life. It&rsquo;s not a dress rehearsal.
+            </p>
+            <p className="mt-6 font-ui text-[11px] uppercase tracking-[0.3em] text-gold">
+              Friedrich Nietzsche
+            </p>
           </div>
         </section>
 
@@ -177,10 +239,21 @@ export default function Home() {
             <div className="grid gap-8 lg:grid-cols-3">
               {chooseAdventure.services.map((service) => (
                 <article key={service.tag} className="overflow-hidden rounded-[28px] bg-brand-paper">
+                  {service.image && (
+                    <div className="relative h-52 w-full sm:h-56">
+                      <Image
+                        src={service.image.src}
+                        alt={service.image.alt}
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 1024px) 33vw, 100vw"
+                      />
+                    </div>
+                  )}
                   <div className="p-6 sm:p-7">
                     <span className="text-3xl block mb-4">{service.icon}</span>
                     <p className={`text-[12px] uppercase tracking-[0.2em] font-mono ${
-                      ['Consulting & Strategy', 'Signature Programs', 'Live Events & Retreats'].includes(
+                      ['Consulting & Facilitation', 'Signature Programs', 'Live Events & Offsites Byron'].includes(
                         service.tag
                       )
                         ? 'text-gold'
@@ -203,22 +276,57 @@ export default function Home() {
                 </article>
               ))}
             </div>
+
+            <div className="mt-12 text-center">
+              <a
+                href="https://inthepocketbyron.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-filled"
+              >
+                Let&rsquo;s Imagine
+              </a>
+            </div>
           </div>
         </section>
 
         {/* ── AUTHORITY ────────────────────────────────────────────────────── */}
         <section className="bg-brand-paper py-16 sm:py-24">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="max-w-4xl">
-              <p className="bauhaus-kicker text-gold mb-6">{authority.kicker}</p>
-              <h2 className="font-display text-[2.8rem] leading-tight tracking-[-0.02em] text-brand-black sm:text-[4rem] mb-8">
-                {authority.heading}
-              </h2>
-              {authority.body.map((para, i) => (
-                <p key={i} className="font-body text-lg leading-relaxed text-ink/75 mb-4">
-                  {para}
-                </p>
-              ))}
+            <div className="grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+              <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[28px] bg-grey-light">
+                <Image
+                  src="/images/lisa-galea-about.jpg"
+                  alt="Lisa Galea — founder portrait"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 30vw, 80vw"
+                />
+              </div>
+              <div className="max-w-4xl">
+                <p className="bauhaus-kicker text-gold mb-6">{authority.kicker}</p>
+                <h2 className="font-display text-[2.8rem] leading-tight tracking-[-0.02em] text-brand-black sm:text-[4rem] mb-8">
+                  {authority.heading}
+                </h2>
+                {authority.body.map((para, i) => (
+                  <p key={i} className={`font-body text-lg leading-relaxed text-ink/75 mb-4 ${i === 0 ? 'font-heading text-2xl tracking-[-0.02em] text-brand-black' : ''}`}>
+                    {para}
+                  </p>
+                ))}
+                <div className="mt-8">
+                  <p className="font-ui text-[11px] uppercase tracking-[0.22em] text-brand-black">
+                    Lisa Galea, MBSc.
+                  </p>
+                  <p className="font-ui text-[10px] uppercase tracking-[0.18em] text-ink/50 mt-1">
+                    Disruptive Alchemist aka Miss Messy
+                  </p>
+                </div>
+                <div className="mt-8">
+                  <Link href="/about" className="btn btn-filled">
+                    More About Me
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>

@@ -87,7 +87,7 @@ External site: [sanctuaryinthepocket.com.au](https://sanctuaryinthepocket.com.au
 Route to: [/services](/services) or sanctuaryinthepocket.com.au
 
 **2. Executive Coaching & Leadership Labs — "The HCOS Upgrade Framework"**
-HCOS = Human-Centred Operating System. Think of it as an operating system upgrade for how you lead.
+HCOS = Human Cognitive Operating System. Think of it as an operating system upgrade for how you lead.
 Trains next-gen creative executives: emotional intelligence + nudging psychology + AI-enhanced clarity tools + narrative strategy.
 Not your average leadership development. For people who think in systems and stories, not silos.
 Outcomes: braver decisions, clearer influence, deep cultural leadership.

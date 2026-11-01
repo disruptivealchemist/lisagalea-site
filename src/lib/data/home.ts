@@ -4,22 +4,22 @@ export const homeContent: HomeContent = {
   meta: {
     title: "Lisa Galea | Creative Leadership & Human-Centred AI",
     description:
-      "More Brain. Less Bollocks. All Heart. Lead with curiosity and transform with clarity. Where commercial creativity meets human intelligence.",
+      "More brains. Less bollocks. All heart. Lead with curiosity and transform with clarity. Where commercial creativity meets collective intelligence.",
     canonical: "/",
   },
 
   hero: {
-    kicker: "Creative Leadership / Human-Centred AI",
-    heading: "More Brain. Less Bollocks. All Heart.",
+    kicker: "The Art and Science of Play",
+    heading: "More brains. Less bollocks. All heart.",
     subheadline:
-      "Lead with Curiosity. Transform with Clarity. Where Commercial Creativity Meets Human Intelligence.",
+      "Lead with Curiosity. Transform with Clarity. Where Commercial Creativity Meets Collective Intelligence.",
     body: [
       "You think in systems, but feel the cracks. The pace is relentless. The pressure is high. And somewhere in the noise, clarity and creativity got buried. This space exists to change that.",
       "I work with leaders who are navigating complexity, aware that what got them here won't get them where they're going. Together, we explore new ways of seeing, leading, and creating—integrating emotional intelligence, behavioral science, and future-thinking to unlock insight and action.",
       "You don't need more information. You need a new way of connecting the dots.",
     ],
-    primaryCta: { label: "Let's Explore", href: "/services" },
-    secondaryCta: { label: "Book a Clarity Call", href: "/contact" },
+    primaryCta: { label: "Work with me", href: "https://aimegos.com/", external: true },
+    secondaryCta: { label: "More About Me", href: "/about" },
   },
 
   certificationBadges: [
@@ -33,27 +33,27 @@ export const homeContent: HomeContent = {
   socialProof: {
     heading: "Trusted by Visionaries. Grounded in Results.",
     stats: [
-      { number: "30+", label: "Years guiding creative and commercial transformation" },
-      { number: "90%", label: "Long-term client retention" },
-      { number: "5", label: "Successful businesses founded, scaled, and thriving" },
-      { number: "160+", label: "Countries facilitated through leadership programs" },
+      { number: "90%", label: "Customer Retention — over 17 yr in business" },
+      { number: "19", label: "Commercial Understanding — Industry Sectors" },
+      { number: "30", label: "Commercial Understanding — Years of experience" },
+      { number: "5", label: "Business Acumen — Successful Active Businesses" },
     ],
     testimonials: [
       {
         stars: 5,
-        title: "World-Class Creative Solutions",
+        title: "Lisa is inclusive in our corporate profile development.",
         quote:
-          "I have worked with graphic designers within some of the world's greatest advertising agencies and would rate Lisa in the top tier. Her creative solutions and design flare are world class.",
-        name: "David Meo",
-        role: "Creative Director, Meo Consulting",
+          "Your support and advice on branding, marketing and AI transformation during our 19 year business relationship has been invaluable.",
+        name: "James Emery",
+        role: "Founder, Emery Industries",
       },
       {
         stars: 5,
-        title: "The Absolute Go-To",
+        title: "When things don't add up, start subtracting.",
         quote:
-          "Being a marketing agency, we've worked with many graphic designers and 'branding experts,' only to be let down. We've worked with Lisa for a long time now and she is head and shoulders the best branding expert I've ever had the pleasure to work with.",
-        name: "Marcus Jovanovich",
-        role: "Owner, My Marketing Coach",
+          "Our second year as an exhibitor at #adobemax was a big improvement for us. We were able to do more, for less money, faster, and with less stress. Booth setup was estimated at $13k. No thank you. With Lisa Galea's recommendation, we got it done for under $1k.",
+        name: "Chris Do",
+        role: "Founder, The Futur",
       },
     ],
   },
@@ -86,37 +86,50 @@ export const homeContent: HomeContent = {
   chooseAdventure: {
     kicker: "Work with me",
     heading: "Choose Your Adventure",
-    body: "Curious minds welcome the brave. The unconventional. The quietly brilliant. This is your playground.",
+    body: "Short, high-safety experiences that create lasting behaviour change. The brave, the unconventional, the quietly brilliant. This is your playground.",
     services: [
       {
-        tag: "Consulting & Strategy",
+        tag: "Consulting & Facilitation",
         icon: "🧭",
-        heading: "Consulting\n& Strategy",
+        heading: "Expand Possibilities",
         body: "Navigate the fast-paced business landscape with expert guidance on AI integration, behavioral science, commercial creativity, and diversity-first innovation.",
         cta: { label: "Learn More", href: "/services" },
+        image: {
+          src: "/images/consulting.jpg",
+          alt: "Lisa Galea delivering a keynote — consulting and facilitation",
+        },
       },
       {
         tag: "Signature Programs",
         icon: "🧠",
-        heading: "Signature\nPrograms",
+        heading: "Build Teams That Thrive",
         body: "From 6-month innovation mastermind to executive coaching, our programs are designed for leaders ready to move from expert to exponential.",
         cta: { label: "Learn More", href: "/services" },
+        image: {
+          src: "/images/lisa-galea-ai-leadership.jpg",
+          alt: "AI leadership training with Lisa Galea — signature programs",
+        },
       },
       {
-        tag: "Live Events & Retreats",
+        tag: "Live Events & Offsites Byron",
         icon: "🌿",
-        heading: "Live Events\n& Retreats",
+        heading: "Escape the Ordinary",
         body: "Immersive experiences at Sanctuary in Byron Bay where strategic clarity meets creative breakthrough. Workshops, offsites, keynotes.",
         cta: { label: "Learn More", href: "/services" },
+        image: {
+          src: "/images/retreats-offsites.jpg",
+          alt: "Sanctuary retreats and offsites in Byron Bay",
+        },
       },
     ],
   },
 
   authority: {
     kicker: "AI + Creativity + Leadership for the Bold",
-    heading: "AI isn't about automating boring tasks.",
+    heading: "Hello, I'm Lisa",
     body: [
-      "It's about liberation—freeing humans from acting like machines, disrupting linear systems, and eliminating soul-draining work.",
+      "Recognise patterns. Reframe perception. Redefine possibility.",
+      "AI isn't about automating boring tasks. It's about liberation—freeing humans from acting like machines, disrupting linear systems, and eliminating soul-draining work.",
       "My approach? Blend behavioral science, emotional intelligence, and strategic curiosity to help leaders thrive in complexity. Because in this tech supercycle, curiosity is currency.",
     ],
   },

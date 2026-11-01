@@ -14,10 +14,16 @@
 
 @theme {
   /* ── Colors ── */
-  --color-ink:        #272626;          /* primary text / border */
+  --color-ink:        #272626;          /* primary text / border (live primary ink) */
   --color-ink-strong: #262626;          /* high-contrast variant */
   --color-ink-muted:  rgba(38,38,38,0.65); /* secondary text / form placeholder */
-  --color-gold:       #F5B51A;          /* accent / hover state */
+  --color-body-text:  #212427;          /* live body{color:#212427} */
+  --color-gold:       #EFC633;          /* accent / hover state — live site gold */
+  --color-nav-ink:    #2C3333;          /* live nav link color */
+  --color-red-accent: #C02327;          /* live active-nav + eyebrow labels */
+  --color-red-hover:  #EE3240;          /* live a:hover + footer links */
+  --color-teal-link:  #4C8089;          /* live body link color */
+  --color-teal-light: #71A2C0;          /* live hero gradient stop */
   --color-grey-light: #f7f7f7;          /* subtle backgrounds */
   --color-canvas:     #f7f7f7;          /* page background */
   --color-brand-black:#0a0a0b;
@@ -59,7 +65,13 @@
 :root {
   /* Expose raw tokens for non-Tailwind CSS usage (e.g. @keyframes, SVG) */
   --clr-ink:        #272626;
-  --clr-gold:       #F5B51A;
+  --clr-body-text:  #212427;          /* live body{color:#212427} */
+  --clr-gold:       #EFC633;
+  --clr-nav-ink:    #2C3333;
+  --clr-red-accent: #C02327;
+  --clr-red-hover:  #EE3240;
+  --clr-teal-link:  #4C8089;
+  --clr-teal-light: #71A2C0;
   --clr-grey-light: #f7f7f7;
   --clr-canvas:     #f7f7f7;
   --clr-brand-black:#0a0a0b;
@@ -74,12 +86,22 @@
 
 body {
   background-color: var(--clr-brand-paper);
-  color: var(--clr-ink);
+  color: var(--clr-body-text);
   /* Font stack: Adobe Fonts → graceful fallback while kit loads */
   font-family: "futura-100-book", "Futura", "Century Gothic", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+a {
+  color: #4C8089;
+  text-decoration: none;
+  transition: color 0.18s var(--ease-out);
+}
+
+a:hover {
+  color: #EE3240;
 }
 
 ::selection {
@@ -111,23 +133,24 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   font-family: "futura-100-book", "Futura", "Century Gothic", Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   font-style: normal;
-  letter-spacing: 0.22em;
+  letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
-  border-width: 2px;
+  border-width: 3px;
   border-style: solid;
   border-radius: 50px;
   padding: 1rem 1.7rem;
-  background-color: var(--clr-brand-paper);
-  color: var(--clr-brand-black);
-  border-color: var(--clr-brand-black);
+  background-color: #ffffff;
+  color: #272626;
+  border-color: #272626;
   transition:
     color 0.22s var(--ease-out),
     background-color 0.22s var(--ease-out),
     border-color 0.22s var(--ease-out),
+    border-radius 0.22s var(--ease-out),
     transform 0.22s var(--ease-out);
   cursor: pointer;
   white-space: nowrap;
@@ -139,9 +162,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn:hover,
 .btn:focus-visible {
-  color: var(--clr-brand-paper);
-  background-color: var(--clr-gold);
-  border-color: var(--clr-gold);
+  color: #272626;
+  background-color: #ffffff;
+  border-color: #272626;
+  border-radius: 25px;
 }
 
 .btn:focus-visible {
@@ -149,18 +173,19 @@ h1, h2, h3, h4, h5, h6 {
   outline-offset: 2px;
 }
 
-/* Filled / primary variant — dark bg, same hover */
+/* Filled / primary variant — live Divi button: white pill with 3px ink border */
 .btn-filled {
-  background-color: var(--clr-gold);
-  color: var(--clr-brand-paper);
-  border-color: var(--clr-gold);
+  background-color: #ffffff;
+  color: #272626;
+  border-color: #272626;
 }
 
 .btn-filled:hover,
 .btn-filled:focus-visible {
-  color: var(--clr-brand-paper);
-  background-color: var(--clr-brand-black);
-  border-color: var(--clr-brand-black);
+  color: #272626;
+  background-color: #ffffff;
+  border-color: #272626;
+  border-radius: 25px;
 }
 
 /* Ghost variant — for buttons sitting on dark/ink backgrounds */
@@ -173,8 +198,9 @@ h1, h2, h3, h4, h5, h6 {
 .btn-ghost:hover,
 .btn-ghost:focus-visible {
   color: var(--clr-brand-paper);
-  background-color: var(--clr-gold);
-  border-color: var(--clr-gold);
+  background-color: transparent;
+  border-color: var(--clr-brand-paper);
+  border-radius: 25px;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -419,7 +445,7 @@ textarea.field:focus {
   align-items: center;
   justify-content: center;
   transition: border-color 0.2s, transform 0.15s;
-  box-shadow: 0 4px 20px rgba(245, 181, 26, 0.18);
+  box-shadow: 0 4px 20px rgba(239, 198, 51, 0.18);
 }
 
 .zz-avatar-btn:hover {
@@ -428,7 +454,7 @@ textarea.field:focus {
 }
 
 .zz-avatar-btn--open {
-  border-color: rgba(245, 181, 26, 0.5);
+  border-color: rgba(239, 198, 51, 0.5);
 }
 
 .zz-monogram {
@@ -447,7 +473,7 @@ textarea.field:focus {
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  border: 1px solid rgba(245, 181, 26, 0.35);
+  border: 1px solid rgba(239, 198, 51, 0.35);
   animation: zz-pulse 2.4s ease-out infinite;
   pointer-events: none;
 }
@@ -506,10 +532,10 @@ textarea.field:focus {
   max-height: calc(100dvh - 120px);
   z-index: 8999;
   background: var(--clr-brand-black);
-  border: 1px solid rgba(245, 181, 26, 0.3);
+  border: 1px solid rgba(239, 198, 51, 0.3);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(245, 181, 26, 0.08);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(239, 198, 51, 0.08);
   animation: zz-panel-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -533,8 +559,8 @@ textarea.field:focus {
       0deg,
       transparent,
       transparent 3px,
-      rgba(245, 181, 26, 0.025) 3px,
-      rgba(245, 181, 26, 0.025) 4px
+      rgba(239, 198, 51, 0.025) 3px,
+      rgba(239, 198, 51, 0.025) 4px
     ),
     var(--clr-brand-black);
 }
@@ -565,7 +591,7 @@ textarea.field:focus {
   font-size: 8px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(245, 181, 26, 0.5);
+  color: rgba(239, 198, 51, 0.5);
   margin: 2px 0 0;
 }
 
@@ -597,7 +623,7 @@ textarea.field:focus {
   font-size: 9px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(245, 181, 26, 0.55);
+  color: rgba(239, 198, 51, 0.55);
 }
 
 /* ── Messages ───────────────────────────────────────────────────────────── */
@@ -615,7 +641,7 @@ textarea.field:focus {
 /* Thin scrollbar */
 .zz-messages::-webkit-scrollbar { width: 3px; }
 .zz-messages::-webkit-scrollbar-track { background: transparent; }
-.zz-messages::-webkit-scrollbar-thumb { background: rgba(245, 181, 26, 0.3); }
+.zz-messages::-webkit-scrollbar-thumb { background: rgba(239, 198, 51, 0.3); }
 
 .zz-msg {
   display: flex;
@@ -639,8 +665,8 @@ textarea.field:focus {
   font-weight: 700;
   color: var(--clr-gold);
   letter-spacing: 0.06em;
-  background: rgba(245, 181, 26, 0.1);
-  border: 1px solid rgba(245, 181, 26, 0.25);
+  background: rgba(239, 198, 51, 0.1);
+  border: 1px solid rgba(239, 198, 51, 0.25);
   width: 28px;
   height: 28px;
   display: flex;
@@ -661,7 +687,7 @@ textarea.field:focus {
 .zz-msg--assistant .zz-msg-bubble {
   color: rgba(247, 247, 247, 0.88);
   border-left: 2px solid var(--clr-gold);
-  background: rgba(245, 181, 26, 0.04);
+  background: rgba(239, 198, 51, 0.04);
 }
 
 /* User messages — right-aligned, outline style */
@@ -692,7 +718,7 @@ textarea.field:focus {
   gap: 4px;
   padding: 12px 13px;
   border-left: 2px solid var(--clr-gold);
-  background: rgba(245, 181, 26, 0.04);
+  background: rgba(239, 198, 51, 0.04);
 }
 
 .zz-typing span {
@@ -717,7 +743,7 @@ textarea.field:focus {
 .zz-input-row {
   display: flex;
   align-items: center;
-  border-top: 1px solid rgba(245, 181, 26, 0.2);
+  border-top: 1px solid rgba(239, 198, 51, 0.2);
   gap: 0;
   flex-shrink: 0;
 }
@@ -747,7 +773,7 @@ textarea.field:focus {
 .zz-send {
   background: transparent;
   border: none;
-  border-left: 1px solid rgba(245, 181, 26, 0.2);
+  border-left: 1px solid rgba(239, 198, 51, 0.2);
   color: var(--clr-gold);
   font-size: 18px;
   width: 48px;
@@ -761,12 +787,12 @@ textarea.field:focus {
 }
 
 .zz-send:hover:not(:disabled) {
-  background: rgba(245, 181, 26, 0.12);
+  background: rgba(239, 198, 51, 0.12);
   color: #fff;
 }
 
 .zz-send:disabled {
-  color: rgba(245, 181, 26, 0.25);
+  color: rgba(239, 198, 51, 0.25);
   cursor: not-allowed;
 }
 
@@ -780,16 +806,16 @@ textarea.field:focus {
   color: rgba(247, 247, 247, 0.2);
   padding: 6px 14px 8px;
   flex-shrink: 0;
-  border-top: 1px solid rgba(245, 181, 26, 0.08);
+  border-top: 1px solid rgba(239, 198, 51, 0.08);
 }
 
 .zz-footer-link {
-  color: rgba(245, 181, 26, 0.4);
+  color: rgba(239, 198, 51, 0.4);
   text-decoration: none;
 }
 
 .zz-footer-link:hover {
-  color: rgba(245, 181, 26, 0.7);
+  color: rgba(239, 198, 51, 0.7);
 }
 
 /* ── Modal Mode (Centered Overlay) ──────────────────────────────────────────── */
@@ -939,5 +965,17 @@ textarea.field:focus {
 
   .zz-modal-overlay {
     padding: 0;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -16,14 +16,14 @@ export const metadata: Metadata = {
     template: "%s | Lisa Galea",
   },
   description:
-    "Creative leadership consultant, facilitator, and AI strategist. " +
+    "leadership consultant, facilitator, and AI strategist. " +
     "More brains. Less bollocks. All heart.",
   openGraph: {
     type: "website",
     locale: "en_AU",
     url: siteUrl,
     siteName: "Lisa Galea",
-    title: "Lisa Galea | Creative Leadership & Human-Centred AI",
+    title: "Lisa Galea | Ai Transformation Design, Leadership & Human-Centred AI",
     description:
       "Creative leadership consultant, facilitator, and AI strategist. " +
       "More brains. Less bollocks. All heart.",

@@ -89,7 +89,7 @@ export const servicesContent: ServicesContent = {
       },
       {
         q: "What is the HCOS Upgrade Framework?",
-        a: "HCOS stands for Human-Centred Operating System. It's an executive coaching framework that combines emotional intelligence, behavioural science, AI-enhanced clarity tools, and narrative strategy — designed to upgrade how you lead, not just what you know.",
+        a: "HCOS stands for Human Cognitive Operating System. It's an executive coaching framework that combines emotional intelligence, behavioural science, AI-enhanced clarity tools, and narrative strategy — designed to upgrade how you lead, not just what you know.",
       },
       {
         q: "How is a strategic off-site different from a regular away day?",

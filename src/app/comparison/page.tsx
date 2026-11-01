@@ -91,7 +91,7 @@ const ZONES: Zone[] = [
     title: "HCOS PORTAL",
     label: "ARCHIVE_04",
     description:
-      "The Human-Centric Operating System. A proprietary methodology for navigating the complexity of modern life.",
+      "The Human Cognitive Operating System. A proprietary methodology built on four modules — Mindware, Soulware, Skillware and Tribal OS — for navigating the complexity of modern life.",
     tags: ["Frameworks", "Methodology", "OS"],
     icon: <ShieldCheck size={20} />,
   },

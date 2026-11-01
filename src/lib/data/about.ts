@@ -158,7 +158,7 @@ export const aboutContent: AboutContent = {
       },
       {
         q: "What is the HCOS Framework?",
-        a: "HCOS stands for Human-Centred Operating System — Lisa's proprietary framework for upgrading how leaders think, connect, and make decisions. It combines emotional intelligence, nudge psychology, AI-enhanced clarity tools, and narrative strategy. Think of it as an operating system upgrade for how you lead.",
+        a: "HCOS stands for Human Cognitive Operating System — Lisa's proprietary framework for upgrading how leaders think, connect, and make decisions. It combines emotional intelligence, nudge psychology, AI-enhanced clarity tools, and narrative strategy. Think of it as an operating system upgrade for how you lead.",
       },
       {
         q: "Where is Lisa based?",

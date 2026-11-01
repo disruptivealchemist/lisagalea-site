@@ -2,7 +2,6 @@
 
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 export function ParallaxCard() {
   const ref = useRef<HTMLDivElement>(null);
@@ -34,6 +33,7 @@ export function ParallaxCard() {
           src="/images/sanctuary-retreat.jpg"
           alt="Sanctuary in the Pocket retreat"
           fill
+          sizes="(min-width: 640px) 380px, 100vw"
           className="object-cover"
           style={{ transform: `translateY(${offset}px)` }}
         />
